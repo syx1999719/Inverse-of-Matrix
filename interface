@@ -1,0 +1,9 @@
+interface
+
+	subroutine reverse(a0,c)
+		implicit none;
+		real*8::a0(:,:),c(:,:);
+		integer::n,m;
+	end subroutine
+	
+end interface
