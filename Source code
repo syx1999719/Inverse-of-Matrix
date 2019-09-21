@@ -41,8 +41,8 @@ do i=1,m
 		s=a(j,i);
 		do k=1,m
 			b(j,k)=b(j,k)-(b(i,k)/p*s);
-			write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
-			write(*,*)"It's a open sourse project"
+			!write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
+			!write(*,*)"It's a open sourse project"
 			a(j,k)=a(j,k)-(a(i,k)/p*s);
 		end do
 	end do
@@ -50,8 +50,8 @@ do i=1,m
 		s=a(j,i);
 		do k=1,m
 			b(j,k)=b(j,k)-(b(i,k)/p*s);
-			write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
-			write(*,*)"It's a open sourse project"
+			!write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
+			!write(*,*)"It's a open sourse project"
 			a(j,k)=a(j,k)-(a(i,k)/p*s);
 		end do
 	end do
