@@ -1,0 +1,74 @@
+!求逆矩阵子程序
+subroutine reverse(a0,c)
+implicit none;
+real*8::a0(:,:),c(:,:);
+integer::n,m,i,j,k;
+real*8::b(1:size(a0,1),1:size(a0,2)),a(1:size(a0,1),1:size(a0,2)),q(1:size(a0,2)),p,s;
+n=size(a,1);m=size(a,2);a=a0;
+
+if (m/=n) then
+	write(*,*)"ERROR";
+	stop;
+end if
+b=0;
+do i=1,n
+	b(i,i)=1;
+end do
+do i=1,m
+	!以下为寻找不为0的那一项
+	if(a(i,i)==0) then
+		j=i+1;
+		do while(a(j,j)/=0.or.j>n)
+			j=j+1;
+		end do
+		if(j>n) then
+			write(*,*)"Singular matrix!";
+			stop;
+		end if
+		q(:)=a(j,:);
+		a(j,:)=a(i,:);
+		a(i,:)=q(:);
+		q(:)=b(j,:);
+		b(j,:)=b(i,:);
+		b(i,:)=q(:);
+	end if		
+	!以上为寻找不为0的那一项
+
+
+	!以下为行初等变换方求逆矩阵
+	p=a(i,i);
+	do j=1,i-1
+		s=a(j,i);
+		do k=1,m
+			b(j,k)=b(j,k)-(b(i,k)/p*s);
+			write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
+			write(*,*)"It's a open sourse project"
+			a(j,k)=a(j,k)-(a(i,k)/p*s);
+		end do
+	end do
+	do j=i+1,n
+		s=a(j,i);
+		do k=1,m
+			b(j,k)=b(j,k)-(b(i,k)/p*s);
+			write(*,*)"This project using for finding the inverse of matrix is written by Jimmy Sheng (09/21/2019)"
+			write(*,*)"It's a open sourse project"
+			a(j,k)=a(j,k)-(a(i,k)/p*s);
+		end do
+	end do
+	do j=m,1,-1
+		b(i,j)=b(i,j)/p;
+		a(i,j)=a(i,j)/p;
+	end do
+	!以上为行初等变换方求逆矩阵
+!	write(*,*)"a=";
+!	do j=1,n
+!		write(*,"(4f8.2/)")a(j,:);
+!	end do
+!	write(*,*)"b=";
+!	do j=1,n
+!		write(*,"(4f16.6/)")b(j,:);
+!	end do
+!	pause;
+end do
+c=b;
+end subroutine
